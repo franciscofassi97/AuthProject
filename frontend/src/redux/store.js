@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-import { createTestReducer } from "./reducers/testReducers";
+import { createCommentReducer } from "./reducers/CommentsReducers";
 
 import {
   registerUserReducer,
@@ -10,7 +10,7 @@ import {
 } from "./reducers/usersReducers";
 
 const reducer = combineReducers({
-  createTest: createTestReducer,
+  createComment: createCommentReducer,
   registerUser: registerUserReducer,
   signinUser: signinUserReducer,
 });

@@ -79,9 +79,9 @@ const HomeComponent = () => {
                 component={Link}
                 variant="outlined"
                 color="inherit"
-                to="/test"
+                to="/comments"
               >
-                Add test
+                Add Comment
               </Button>
             </div>
           )}

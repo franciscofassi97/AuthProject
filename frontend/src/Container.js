@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 //Components
 import PrivateRoute from "./PrivateRoute/PrivateRoutes";
 import SignUpComponent from "./components/users/SignUpComponent";
-import TestComponent from "./components/test/TestComponent";
+import CommentsComponent from "./components/comments/CommentsComponent";
 //Materia Ui
 import { makeStyles } from "@material-ui/core";
 import HomeComponent from "./components/home/HomeComponent";
@@ -31,7 +31,12 @@ const Container = () => {
           <Switch>
             <Route exact path="/" />
             <Route exact path="/signup" component={SignUpComponent} />
-            <PrivateRoute exact path="/test" component={TestComponent} />
+
+            <PrivateRoute
+              exact
+              path="/comments"
+              component={CommentsComponent}
+            />
           </Switch>
         </main>
       </div>
