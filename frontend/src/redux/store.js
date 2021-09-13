@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-import { createCommentReducer } from "./reducers/CommentsReducers";
+import { createCommentReducer } from "./reducers/commentsReducers";
 
 import {
   registerUserReducer,

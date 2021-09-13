@@ -1,7 +1,7 @@
 import { Route, Switch } from "react-router-dom";
 
 //Components
-import PrivateRoute from "./PrivateRoute/PrivateRoutes";
+import PrivateRoute from "./privateRoute/PrivateRoutes";
 import SignUpComponent from "./components/users/SignUpComponent";
 import CommentsComponent from "./components/comments/CommentsComponent";
 //Materia Ui

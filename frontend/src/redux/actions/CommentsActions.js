@@ -1,4 +1,4 @@
-import * as actionTypes from "../constants/CommentsConstants";
+import * as actionTypes from "../constants/commentsConstants";
 import fire from "../../fire";
 import axios from "axios";
 

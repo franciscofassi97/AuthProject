@@ -1,4 +1,4 @@
-import * as actionTypes from "../constants/CommentsConstants";
+import * as actionTypes from "../constants/commentsConstants";
 
 export const createCommentReducer = (state = { comment: {} }, action) => {
   switch (action.type) {
