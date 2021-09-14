@@ -83,6 +83,15 @@ const HomeComponent = () => {
               >
                 Add Comment
               </Button>
+
+              <Button
+                component={Link}
+                variant="outlined"
+                color="inherit"
+                to="/drawings"
+              >
+                Add Imagen
+              </Button>
             </div>
           )}
         </Toolbar>
