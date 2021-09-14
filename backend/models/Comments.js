@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+const { ObjectId } = mongoose.Schema;
+
 const commentsSchema = mongoose.Schema(
   {
     titleComments: {
@@ -12,6 +14,11 @@ const commentsSchema = mongoose.Schema(
     },
     uidUser: {
       type: String,
+      required: true,
+    },
+    idDrawing: {
+      type: ObjectId,
+      ref: "drawings",
       required: true,
     },
   },

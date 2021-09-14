@@ -14,7 +14,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(authObserver());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">

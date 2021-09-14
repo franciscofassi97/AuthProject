@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import fire from "../../fire";
 
 //Action
-import { registerUserAction } from "../../redux/actions/usersActions";
+import { signinUserAction } from "../../redux/actions/usersActions";
 
 const SignUpComponent = () => {
   const [firstName, setFirstName] = useState("");
@@ -28,8 +29,16 @@ const SignUpComponent = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const newUser = { email, password, firstName, lastName };
-    dispatch(registerUserAction(newUser));
+    fire
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        var user = userCredential.user;
+        dispatch(signinUserAction(user));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const formRegister = () => (

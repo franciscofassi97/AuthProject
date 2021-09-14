@@ -1,12 +1,13 @@
 const Comments = require("../models/Comments");
 
 exports.createComment = async (req, res) => {
-  const { titleComments, descriptionsComments, uidUser } = req.body;
+  const { titleComments, descriptionsComments, uidUser, idDrawing } = req.body;
 
   const comment = new Comments({
     titleComments,
     descriptionsComments,
     uidUser,
+    idDrawing,
   });
   try {
     const newComment = await comment.save();
