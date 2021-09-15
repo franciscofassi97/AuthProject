@@ -2,17 +2,24 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
+//Comments Reducers
 import { createCommentReducer } from "./reducers/commentsReducers";
-import { uploadDrawingReducer } from "./reducers/drawingsReducers";
+//Drawings reducers
 import {
-  registerUserReducer,
+  uploadDrawingReducer,
+  getDrawingsByIdUserReducer,
+} from "./reducers/drawingsReducers";
+//Users Reducers
+import {
   signinUserReducer,
+  getAllUsersReducer,
 } from "./reducers/usersReducers";
 
 const reducer = combineReducers({
+  getDrawingsByIdUser: getDrawingsByIdUserReducer,
+  getAllUsers: getAllUsersReducer,
   uploadDrawing: uploadDrawingReducer,
   createComment: createCommentReducer,
-  registerUser: registerUserReducer,
   signinUser: signinUserReducer,
 });
 

@@ -6,8 +6,6 @@ import fire from "../../fire";
 import { signinUserAction } from "../../redux/actions/usersActions";
 
 const SignUpComponent = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,10 +17,6 @@ const SignUpComponent = () => {
       setEmail(value);
     } else if (inputName === "password") {
       setPassword(value);
-    } else if (inputName === "firstName") {
-      setFirstName(value);
-    } else if (inputName === "lastName") {
-      setLastName(value);
     }
   };
 
@@ -43,22 +37,6 @@ const SignUpComponent = () => {
 
   const formRegister = () => (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="firstName">First Name: </label>
-        <input
-          id="firstName"
-          value={firstName}
-          onChange={(event) => inputsChange(event, "firstName")}
-        />
-      </div>
-      <div>
-        <label htmlFor="lastName">Last Name: </label>
-        <input
-          id="lastName"
-          value={lastName}
-          onChange={(event) => inputsChange(event, "lastName")}
-        />
-      </div>
       <div>
         <label htmlFor="email">Email: </label>
         <input

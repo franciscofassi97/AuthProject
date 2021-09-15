@@ -19,6 +19,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/styles";
+import CreateDrawingsComponets from "../drawings/CreateDrawingsComponets";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -29,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
 const HomeComponent = () => {
   const classes = useStyles();
   const [openModal, setOpenModal] = useState(false);
+  const [openModalDrawing, setOpenModalDrawing] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const signinUserState = useSelector((state) => state.signinUser);
@@ -83,14 +85,20 @@ const HomeComponent = () => {
               >
                 Add Comment
               </Button>
-
+              <Button
+                variant="outlined"
+                color="inherit"
+                onClick={() => setOpenModalDrawing(true)}
+              >
+                Add Imagen
+              </Button>
               <Button
                 component={Link}
                 variant="outlined"
                 color="inherit"
-                to="/drawings"
+                to="/list/users"
               >
-                Add Imagen
+                Explore
               </Button>
             </div>
           )}
@@ -104,47 +112,18 @@ const HomeComponent = () => {
       >
         <SignInComponent />
       </ModalComponent>
+
+      <ModalComponent
+        title="Upload"
+        openModal={openModalDrawing}
+        setOpenModal={setOpenModalDrawing}
+      >
+        <CreateDrawingsComponets />
+      </ModalComponent>
     </div>
   );
 
-  return (
-    // <div>
-    //   <h1>Welcome!</h1>
-
-    //   <div>
-    //     {!isLoggedIn ? (
-    //       <Link to="/signin">SingIn</Link>
-    //     ) : (
-    //       <div>
-    //         <span onClick={signOut}>
-    //           <button>Sign out</button>
-    //         </span>
-    //         <div>
-    //           <Link to="/test">Add test</Link>
-    //         </div>
-    //       </div>
-    //     )}
-    //   </div>
-    //   <div>
-    //     {/* <Link to="/signup">Signup</Link> */}
-    //     <Button
-    //       variant="outlined"
-    //       color="primary"
-    //       onClick={() => setOpenModal(true)}
-    //     >
-    //       Sing Up
-    //     </Button>
-    //     <ModalComponent
-    //       title="Sign Up"
-    //       openModal={openModal}
-    //       setOpenModal={setOpenModal}
-    //     >
-    //       <SignUpComponent />
-    //     </ModalComponent>
-    //   </div>
-    // </div>
-    <>{menu()}</>
-  );
+  return <>{menu()}</>;
 };
 
 export default HomeComponent;

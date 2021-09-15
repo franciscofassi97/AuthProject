@@ -30,3 +30,16 @@ exports.uploadDrawings = async (req, res) => {
     });
   }
 };
+
+exports.getDrawingsByIdUser = async (req, res) => {
+  const idUser = req.params.idUser;
+  try {
+    const drawings = await Drawings.find({ uidUser: idUser });
+    res.json(drawings);
+  } catch (error) {
+    return res.status(400).json({
+      error: "It was not possible to upload your drawing at the moment",
+      message: `The error is: ${error}`,
+    });
+  }
+};

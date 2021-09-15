@@ -9,6 +9,8 @@ import CreateDrawingsComponets from "./components/drawings/CreateDrawingsCompone
 //Materia Ui
 import { makeStyles } from "@material-ui/core";
 import HomeComponent from "./components/home/HomeComponent";
+import ListAllUsers from "./components/users/ListAllUsers";
+import ListDrawigsComponent from "./components/drawings/ListDrawigsComponent";
 
 const styles = makeStyles((theme) => ({
   root: {
@@ -33,17 +35,22 @@ const Container = () => {
           <Switch>
             <Route exact path="/" />
             <Route exact path="/signup" component={SignUpComponent} />
-
             <PrivateRoute
               exact
               path="/comments"
               component={CommentsComponent}
             />
-
             <PrivateRoute
               exact
               path="/drawings"
               component={CreateDrawingsComponets}
+            />
+            <PrivateRoute exact path="/list/users" component={ListAllUsers} />
+
+            <PrivateRoute
+              exact
+              path="/drawing/:uidusers"
+              component={ListDrawigsComponent}
             />
           </Switch>
         </main>

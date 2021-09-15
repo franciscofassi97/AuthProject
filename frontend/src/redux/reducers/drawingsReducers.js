@@ -25,3 +25,32 @@ export const uploadDrawingReducer = (state = { drawing: {} }, action) => {
       return state;
   }
 };
+export const getDrawingsByIdUserReducer = (
+  state = { drawingsByIdUser: [] },
+  action
+) => {
+  switch (action.type) {
+    case actionTypes.GET_DRAWING_USER_ID_REQUEST:
+      return {
+        loading: true,
+        drawingsByIdUser: [],
+      };
+    case actionTypes.GET_DRAWING_USER_ID_SUCCESS:
+      return {
+        loading: false,
+        drawingsByIdUser: action.payload,
+        success: true,
+      };
+    case actionTypes.GET_DRAWING_USER_ID_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    case actionTypes.GET_DRAWING_USER_ID_RESET:
+      return {
+        drawingsByIdUser: [],
+      };
+    default:
+      return state;
+  }
+};

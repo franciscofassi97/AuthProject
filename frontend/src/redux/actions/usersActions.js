@@ -40,3 +40,18 @@ export const authObserver = () => (dispatch) => {
     dispatch({ type: actionTypes.USER_SIGNIN_FAIL, payload: message });
   }
 };
+
+export const getAllUsersAction = () => async (dispatch) => {
+  dispatch({ type: actionTypes.GET_USERS_REQUEST });
+  try {
+    const { data } = await axios.get("/api/users/list");
+
+    dispatch({ type: actionTypes.GET_USERS_SUSSCESS, payload: data });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({ type: actionTypes.GET_USERS_FAIL, payload: message });
+  }
+};
