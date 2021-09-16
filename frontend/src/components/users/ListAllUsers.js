@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllUsersAction } from "../../redux/actions/usersActions";
+import LoadingComponent from "../modal/LoadingComponent";
 import UsersComponent from "./UsersComponent";
 
 //Actios
@@ -13,7 +14,6 @@ const ListAllUsers = () => {
 
   useEffect(() => {
     if (usersSuccess) {
-      console.log("hola");
     } else {
       dispatch(getAllUsersAction());
     }
@@ -21,17 +21,25 @@ const ListAllUsers = () => {
 
   return (
     <div>
-      {users.map((user) => (
+      {loading ? (
+        <LoadingComponent />
+      ) : error ? (
+        <h1>Error</h1>
+      ) : (
         <div>
-          <UsersComponent
-            key={user.uid}
-            email={user.email}
-            displayName={user.displayName}
-            photoURL={user.photoURL}
-          />
-          <Link to={`/drawing/${user.uid}`}> Ver </Link>
+          {users.map((user) => (
+            <div>
+              <UsersComponent
+                key={user.uid}
+                email={user.email}
+                displayName={user.displayName}
+                photoURL={user.photoURL}
+              />
+              <Link to={`/drawing/${user.uid}`}> Ver </Link>
+            </div>
+          ))}
         </div>
-      ))}
+      )}
     </div>
   );
 };

@@ -55,3 +55,18 @@ export const getAllUsersAction = () => async (dispatch) => {
     dispatch({ type: actionTypes.GET_USERS_FAIL, payload: message });
   }
 };
+export const getUserByIdAction = (uidUser) => async (dispatch) => {
+  dispatch({ type: actionTypes.GET_USERS_BY_ID_REQUEST });
+
+  try {
+    const { data } = await axios.get(`/api/users/${uidUser}`);
+
+    dispatch({ type: actionTypes.GET_USERS_BY_ID_SUSSCESS, payload: data });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({ type: actionTypes.GET_USERS_BY_ID_FAIL, payload: message });
+  }
+};

@@ -54,3 +54,30 @@ export const getDrawingsByIdUserReducer = (
       return state;
   }
 };
+
+export const getDrawingByIdReducer = (state = { drawing: {} }, action) => {
+  switch (action.type) {
+    case actionTypes.GET_DRAWING_BY_ID_REQUEST:
+      return {
+        loading: true,
+      };
+    case actionTypes.GET_DRAWING_BY_ID_SUCCESS:
+      return {
+        loading: false,
+        drawing: action.payload,
+        success: true,
+      };
+    case actionTypes.GET_DRAWING_BY_ID_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+
+    case actionTypes.GET_DRAWING_BY_ID_RESET:
+      return {
+        drawing: {},
+      };
+    default:
+      return state;
+  }
+};

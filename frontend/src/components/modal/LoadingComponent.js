@@ -1,9 +1,14 @@
-import React from "react";
-
+//material ui
+import LoopIcon from "@material-ui/icons/Loop";
+import IconButton from "@material-ui/core/IconButton";
 const LoadingComponent = () => {
   return (
     <div>
-      <h1>Loading Component</h1>
+      <i>
+        <IconButton aria-label="Loading">
+          <LoopIcon />
+        </IconButton>
+      </i>
     </div>
   );
 };

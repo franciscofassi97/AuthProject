@@ -25,3 +25,22 @@ exports.getAllUsers = async (req, res) => {
     });
   }
 };
+
+exports.getUserById = async (req, res) => {
+  const idUser = req.params.idUser;
+  var user = {};
+  try {
+    const { email, displayName } = await admin.auth().getUser(idUser);
+
+    user = {
+      email,
+      displayName,
+    };
+    return res.status(200).send(user);
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+    });
+  }
+};

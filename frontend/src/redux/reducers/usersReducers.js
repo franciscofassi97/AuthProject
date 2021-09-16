@@ -33,7 +33,7 @@ export const getAllUsersReducer = (state = { users: [] }, action) => {
       };
     case actionTypes.GET_USERS_SUSSCESS:
       return {
-        loading: true,
+        loading: false,
         users: action.payload,
         success: true,
       };
@@ -51,4 +51,28 @@ export const getAllUsersReducer = (state = { users: [] }, action) => {
   }
 };
 
-//
+export const getUserByIdReducer = (state = { user: {} }, action) => {
+  switch (action.type) {
+    case actionTypes.GET_USERS_BY_ID_REQUEST:
+      return {
+        loading: true,
+      };
+    case actionTypes.GET_USERS_BY_ID_SUSSCESS:
+      return {
+        loading: false,
+        user: action.payload,
+        success: true,
+      };
+    case actionTypes.GET_USERS_BY_ID_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    case actionTypes.GET_USERS_BY_ID_RESET:
+      return {
+        user: {},
+      };
+    default:
+      return state;
+  }
+};

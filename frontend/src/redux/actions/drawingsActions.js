@@ -47,3 +47,23 @@ export const getDrawingsByIdUserAction = (uidUser) => async (dispatch) => {
     dispatch({ type: actionTypes.GET_DRAWING_USER_ID_FAIL, payload: message });
   }
 };
+
+export const getDrawingByIdAction = (idDrawing) => async (dispatch) => {
+  const token = await fire.auth().currentUser.getIdToken();
+
+  dispatch({ type: actionTypes.GET_DRAWING_BY_ID_REQUEST });
+
+  try {
+    const { data } = await axios.get(`/api/drawings/${idDrawing}`, {
+      headers: { authorization: `Bearer ${token}` },
+    });
+
+    dispatch({ type: actionTypes.GET_DRAWING_BY_ID_SUCCESS, payload: data });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({ type: actionTypes.GET_DRAWING_BY_ID_FAIL, payload: message });
+  }
+};

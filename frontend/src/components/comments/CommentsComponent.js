@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { createCommentAction } from "../../redux/actions/commentsActions";
 //Constams
 import { COMENT_CREATE_REST } from "../../redux/constants/commentsConstants";
+import LoadingComponent from "../modal/LoadingComponent";
 
-const CommentsComponent = ({ history }) => {
+const CommentsComponent = ({ idDrawing }) => {
   const [titleComments, setTitleComments] = useState();
   const [descriptionsComments, setDescriptionsComments] = useState();
 
@@ -26,9 +27,8 @@ const CommentsComponent = ({ history }) => {
     if (successCreate) {
       alert("The comment was create succecfully");
       dispatch({ type: COMENT_CREATE_REST });
-      history.push("/");
     }
-  }, [dispatch, history, successCreate]);
+  }, [dispatch, successCreate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,6 +36,7 @@ const CommentsComponent = ({ history }) => {
       titleComments,
       descriptionsComments,
       uidUser: user.uid,
+      idDrawing,
     };
 
     dispatch(createCommentAction(comment));
@@ -71,8 +72,13 @@ const CommentsComponent = ({ history }) => {
 
   return (
     <div>
-      <h2>Add Comment</h2>
-      {formComment()}
+      {loadingCreate ? (
+        <LoadingComponent />
+      ) : errorCreate ? (
+        <h1>Error</h1>
+      ) : (
+        formComment()
+      )}
     </div>
   );
 };

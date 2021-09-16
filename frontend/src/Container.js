@@ -11,6 +11,7 @@ import { makeStyles } from "@material-ui/core";
 import HomeComponent from "./components/home/HomeComponent";
 import ListAllUsers from "./components/users/ListAllUsers";
 import ListDrawigsComponent from "./components/drawings/ListDrawigsComponent";
+import SeeMoreDrawingComponent from "./components/drawings/SeeMoreDrawingComponent";
 
 const styles = makeStyles((theme) => ({
   root: {
@@ -51,6 +52,12 @@ const Container = () => {
               exact
               path="/drawing/:uidusers"
               component={ListDrawigsComponent}
+            />
+
+            <PrivateRoute
+              exact
+              path="/drawing/by/:idDrawing/:uidUser"
+              component={SeeMoreDrawingComponent}
             />
           </Switch>
         </main>

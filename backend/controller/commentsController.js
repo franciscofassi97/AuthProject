@@ -19,3 +19,17 @@ exports.createComment = async (req, res) => {
     });
   }
 };
+
+exports.getCommetByIdDrawing = async (req, res) => {
+  const idDrawing = req.params.idDrawing;
+
+  try {
+    const commets = await Comments.find({ idDrawing: idDrawing });
+    res.json(commets);
+  } catch (error) {
+    return res.status(400).json({
+      error: `No comments found ${error}`,
+      message: `The error is: ${error}`,
+    });
+  }
+};
